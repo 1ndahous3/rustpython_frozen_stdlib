@@ -12,11 +12,10 @@ import datetime
 
 fn main() {
 
-    let mut settings = vm::Settings::default();
-    settings.path_list.push("RustPython\\Lib".to_owned());
-
+    let settings = vm::Settings::default();
     let interpreter = vm::Interpreter::with_init(settings, |vm| {
         vm.add_frozen(rustpython_pylib::FROZEN_STDLIB);
+        vm.add_native_modules(rustpython_stdlib::get_module_inits());
     });
 
     let _ = interpreter.enter(|vm| {
