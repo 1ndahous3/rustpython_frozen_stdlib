@@ -1,0 +1,8 @@
+[package]
+name = "rustpython_frozen_stdlib"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rustpython-vm = { path = "RustPython/vm", features = ["freeze-stdlib"] }
+rustpython-pylib = { path = "RustPython/pylib", features = ["freeze-stdlib"] }
